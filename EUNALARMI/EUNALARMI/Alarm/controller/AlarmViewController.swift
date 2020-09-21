@@ -10,7 +10,14 @@ import UIKit
 
 class AlarmViewController: UIViewController {
     
-    var alarmList: [Alarm] = []
+    var alarmList: [Alarm] {
+        get {
+            return UserDefaults.standard.arrayModelData(by: "alarmList", type: Alarm.self)
+        }
+        set {
+            UserDefaults.standard.setArrayModel(by: "alarmList", newValue: newValue)
+        }
+    }
     @IBOutlet weak var alarmTableView: UITableView!
     
     @IBAction func modifyAlarm(_ sender: Any) {

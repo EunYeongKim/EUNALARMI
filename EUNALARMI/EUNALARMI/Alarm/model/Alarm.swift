@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Alarm {
+struct Alarm: Codable {
     var alarmAPM: String?
     var alarmLabel: String = "알람"
     var alarmCycle: [WeekDay] = []
@@ -30,7 +30,7 @@ struct AlarmSetting {
     }
 }
 
-enum WeekDay: Int, CaseIterable, Comparable {
+enum WeekDay: Int, CaseIterable, Comparable, Codable {
     static func < (lhs: WeekDay, rhs: WeekDay) -> Bool {
         lhs.rawValue < rhs.rawValue
     }

@@ -18,13 +18,13 @@ class AlarmTableViewCell: UITableViewCell {
     var alarm: Alarm? {
         didSet {
             guard let alarmTmp = alarm else { return }
-            self.alarmAPM.text = alarmTmp.alarmAPM
+            self.alarmAPM.text = alarmTmp.alarmApmLabel
             if alarmTmp.alarmCycle.count == 0 {
                 self.alarmCycle.text = alarmTmp.alarmLabel
             } else {
-                self.alarmCycle.text = alarmTmp.alarmLabel + "  " + convertDaysToLabel(alarmTmp.alarmCycle)
+                self.alarmCycle.text = alarmTmp.alarmLabel + "  " + convertDaysToString(alarmTmp.alarmCycle)
             }
-            self.alarmTime.text = alarmTmp.alarmTime
+            self.alarmTime.text = alarmTmp.alarmTimeLabel
             self.alarmSwitch.isOn = alarmTmp.alarmOn
         }
     }

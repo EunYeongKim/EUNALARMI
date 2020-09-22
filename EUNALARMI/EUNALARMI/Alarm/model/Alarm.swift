@@ -9,9 +9,10 @@
 import Foundation
 
 struct Alarm: Codable {
-    var alarmAPM: String?
+    var alarmApmLabel: String = ""
     var alarmLabel: String = "알람"
     var alarmCycle: [WeekDay] = []
+    var alarmTimeLabel: String = ""
     var alarmTime: String?
     var alarmOn: Bool = true
 }

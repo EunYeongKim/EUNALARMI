@@ -15,5 +15,6 @@ protocol AlarmDetailDelegate: class {
 }
 
 protocol AlarmMainDelegate: class {
-     func addAlarmItem(_ vc: UIViewController, alarm value: Alarm) -> Void
+    func addAlarmItem(alarm value: Alarm) -> Void
+    func editAlarmItem(alarm value: Alarm, index: Int) -> Void
 }

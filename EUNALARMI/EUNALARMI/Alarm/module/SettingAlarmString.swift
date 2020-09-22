@@ -8,7 +8,7 @@
 
 import Foundation
 
-func convertDaysToLabel(_ days: [WeekDay])-> String {
+func convertDaysToString(_ days: [WeekDay])-> String {
     var resultLabel = ""
     var sortedDay = days.sorted()
     

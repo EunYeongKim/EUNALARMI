@@ -13,33 +13,65 @@ class NewAlarmViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var settingTableView: UITableView!
     
-    weak var addAlarmDelegate: AlarmMainDelegate?
+    weak var alarmDelegate: AlarmMainDelegate?
     var alarmSetting: [AlarmSetting] = AlarmSetting.generateData()
     var alarm: Alarm = Alarm()
+    
+    var editIndex: Int?
+    var dateformatter = DateFormatter()
     
     @IBAction func didTapCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func didTapSave(_ sender: Any) {
-        addAlarmDelegate?.addAlarmItem(self, alarm: alarm)
+    @objc func didTapSave(_ sender: Any) {
+        alarmDelegate?.addAlarmItem(alarm: alarm)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapEdit(_ sender: Any) {
+        guard let index = editIndex else { return }
+        alarmDelegate?.editAlarmItem(alarm: alarm, index: index)
         dismiss(animated: true, completion: nil)
     }
     
     @objc func timeChanged() {
-        let dateformatter = DateFormatter()
         dateformatter.dateStyle = .none
         dateformatter.timeStyle = .short
-        
         let datetime = dateformatter.string(from: timePicker.date).split(separator: " ").map(String.init)
-        self.alarm.alarmTime = datetime[0]
-        self.alarm.alarmAPM = datetime[1]
+        self.alarm.alarmTimeLabel = datetime[0]
+        self.alarm.alarmApmLabel = datetime[1]
+        
+        dateformatter.dateFormat = "HH:mm"
+        self.alarm.alarmTime = dateformatter.string(from: timePicker.date)
+    }
+    
+    func prepareEditing() {
+        if let alarmTime = self.alarm.alarmTime {
+            dateformatter.dateFormat = "HH:mm"
+            self.timePicker.date = dateformatter.date(from: alarmTime) ?? Date()
+        }
+        
+        alarmSetting[0].detail = convertDaysToString(self.alarm.alarmCycle)
+        alarmSetting[1].detail = self.alarm.alarmLabel
+    }
+    
+    func initDataWithView() {
+        if editIndex != nil {
+            prepareEditing()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(didTapEdit(_:)))
+        } else {
+            timeChanged()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(didTapSave(_:)))
+        }
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 165/255, green: 147/255, blue: 224/255, alpha: 1.0)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initDataWithView()
         timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        timeChanged()
+        
     }
 }
 
@@ -83,7 +115,7 @@ extension NewAlarmViewController: AlarmDetailDelegate {
     
     func settingAlarmCycle(_ vc: UIViewController, days value: [WeekDay]) {
         alarm.alarmCycle = value
-        alarmSetting[0].detail = convertDaysToLabel(value)
+        alarmSetting[0].detail = convertDaysToString(value)
         settingTableView.reloadData()
     }
 }

@@ -76,6 +76,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="lZM-bv-lYg" id="VEs-jb-jBc"/>
+                                    <outlet property="delegate" destination="lZM-bv-lYg" id="3Tx-3w-iKq"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ld6-l4-TlM">
@@ -84,19 +85,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="116" translatesAutoresizingMaskIntoConstraints="NO" id="cVs-2z-wbi">
                                         <rect key="frame" x="26" y="65" width="367.5" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smy-bo-Raf">
-                                                <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="편집">
-                                                    <color key="titleColor" red="0.33725490200000002" green="0.38431372549999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="modifyAlarm:" destination="lZM-bv-lYg" eventType="touchUpInside" id="5F9-Qg-Q5h"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="QOP-Hb-70y">
-                                                <rect key="frame" x="163" y="0.0" width="43.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="27"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -108,7 +99,7 @@
                                                 </constraints>
                                                 <state key="normal" image="plus"/>
                                                 <connections>
-                                                    <segue destination="udg-ub-kse" kind="show" id="UMq-Jx-xaq"/>
+                                                    <segue destination="udg-ub-kse" kind="show" identifier="newAlarmSegue" id="UMq-Jx-xaq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -221,12 +212,6 @@
                                 <action selector="didTapCancel:" destination="xbn-cu-TrS" id="CsG-M0-oXD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="저장" id="8w9-EE-oG7">
-                            <color key="tintColor" red="0.64705882349999999" green="0.57647058819999997" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="didTapSave:" destination="xbn-cu-TrS" id="Lld-vc-Gde"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -337,7 +322,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXG-E5-FBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.1159420289857" y="-366.29464285714283"/>
+            <point key="canvasLocation" x="2022" y="-366"/>
         </scene>
     </scenes>
     <resources>

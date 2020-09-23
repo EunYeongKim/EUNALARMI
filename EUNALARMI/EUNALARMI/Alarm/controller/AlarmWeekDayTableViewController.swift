@@ -22,16 +22,16 @@ class AlarmWeekDayTableViewController: UITableViewController {
         super.viewDidLoad()
         weekDayTableView.allowsMultipleSelection = true
     }
- 
+    
     override func willMove(toParent parent: UIViewController?) {
-        super.didMove(toParent: parent)
-
+        super.willMove(toParent: parent)
+        
         if parent == nil {
-           guard let selectedRows = weekDayTableView.indexPathsForSelectedRows else { return }
-            self.days = []
+            days = []
+            guard let selectedRows = weekDayTableView.indexPathsForSelectedRows else { return }
             for indexPath in selectedRows {
                 if let week = WeekDay.init(rawValue: indexPath.row) {
-                 days.append(week)
+                    days.append(week)
                 }
             }
             settingCycleDelegate?.settingAlarmCycle(self, days: days.sorted())
@@ -49,6 +49,7 @@ class AlarmWeekDayTableViewController: UITableViewController {
             cell.textLabel?.text =  day.getDayInKorean() + "요일마다"
             if days.contains(day) {
                 cell.accessoryType = .checkmark
+                weekDayTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
         }
         

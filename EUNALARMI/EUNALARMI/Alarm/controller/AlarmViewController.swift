@@ -9,7 +9,6 @@
 import UIKit
 
 class AlarmViewController: UIViewController {
-    
     var alarmList: [Alarm] {
         get {
             return UserDefaults.standard.arrayModelData(by: "alarmList", type: Alarm.self)
@@ -19,10 +18,6 @@ class AlarmViewController: UIViewController {
         }
     }
     @IBOutlet weak var alarmTableView: UITableView!
-    
-    @IBAction func modifyAlarm(_ sender: Any) {
-        
-    }
     
     override func awakeFromNib() {
         let regularImg = UIImage(systemName: "clock")
@@ -38,7 +33,7 @@ class AlarmViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? NewAlarmViewController else { return }
-        vc.addAlarmDelegate = self
+        vc.alarmDelegate = self
     }
     
     @objc func switchChanged(_ sender: UISwitch) {
@@ -63,9 +58,43 @@ extension AlarmViewController: UITableViewDataSource {
     }
 }
 
+extension AlarmViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "편집", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+            guard let vc = UIStoryboard(name: "AlarmStoryboard", bundle: nil).instantiateViewController(withIdentifier: "NewAlarmViewController") as? NewAlarmViewController else { return }
+            let nav = UINavigationController(rootViewController: vc)
+            
+            vc.alarmDelegate = self
+            vc.alarm = self.alarmList[indexPath.row]
+            vc.editIndex = indexPath.row
+            
+            self.present(nav, animated: true, completion: nil)
+            
+            success(true)
+        })
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "삭제", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+            self.alarmList.remove(at: indexPath.row)
+            
+            self.alarmTableView.beginUpdates()
+            self.alarmTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.alarmTableView.endUpdates()
+            
+            success(true)
+        })
+        
+        return UISwipeActionsConfiguration(actions:[deleteAction, editAction])
+    }
+}
+
 extension AlarmViewController: AlarmMainDelegate {
-    func addAlarmItem(_ vc: UIViewController, alarm value: Alarm) {
+    func addAlarmItem(alarm value: Alarm) {
         alarmList.append(value)
+        alarmTableView.reloadData()
+    }
+    
+    func editAlarmItem(alarm value: Alarm, index: Int) {
+        alarmList[index] = value
         alarmTableView.reloadData()
     }
 }

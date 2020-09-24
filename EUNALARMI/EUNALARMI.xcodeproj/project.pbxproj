@@ -13,8 +13,12 @@
 		2816C73E2513172100064CC4 /* AlarmLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C73D2513172100064CC4 /* AlarmLabelViewController.swift */; };
 		2816C7462513496100064CC4 /* SettingAlarmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C7452513496100064CC4 /* SettingAlarmString.swift */; };
 		2816C74925143A2200064CC4 /* AlarmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C74825143A2200064CC4 /* AlarmDelegate.swift */; };
-		2816C74B2514721200064CC4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C74A2514721200064CC4 /* MainTabBarViewController.swift */; };
 		28B7036325189584004EC291 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036225189584004EC291 /* UserDefaultsExtension.swift */; };
+		28B70367251B0F8E004EC291 /* MemoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B70366251B0F8E004EC291 /* MemoStoryboard.storyboard */; };
+		28B7036B251B1644004EC291 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036A251B1644004EC291 /* MemoViewController.swift */; };
+		28B7036E251B39E8004EC291 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036D251B39E8004EC291 /* Memo.swift */; };
+		28B70370251C2520004EC291 /* MemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036F251C2520004EC291 /* MemoCollectionViewCell.swift */; };
+		28B70372251C2C67004EC291 /* CollectionViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B70371251C2C67004EC291 /* CollectionViewCellExtension.swift */; };
 		28F863CE25118C3200DAD97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F863CD25118C3200DAD97B /* AppDelegate.swift */; };
 		28F863D025118C3200DAD97B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F863CF25118C3200DAD97B /* SceneDelegate.swift */; };
 		28F863D525118C3200DAD97B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F863D325118C3200DAD97B /* Main.storyboard */; };
@@ -32,8 +36,12 @@
 		2816C73D2513172100064CC4 /* AlarmLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmLabelViewController.swift; sourceTree = "<group>"; };
 		2816C7452513496100064CC4 /* SettingAlarmString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmString.swift; sourceTree = "<group>"; };
 		2816C74825143A2200064CC4 /* AlarmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDelegate.swift; sourceTree = "<group>"; };
-		2816C74A2514721200064CC4 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		28B7036225189584004EC291 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		28B70366251B0F8E004EC291 /* MemoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoStoryboard.storyboard; sourceTree = "<group>"; };
+		28B7036A251B1644004EC291 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		28B7036D251B39E8004EC291 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		28B7036F251C2520004EC291 /* MemoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollectionViewCell.swift; sourceTree = "<group>"; };
+		28B70371251C2C67004EC291 /* CollectionViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellExtension.swift; sourceTree = "<group>"; };
 		28F863CA25118C3200DAD97B /* EUNALARMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EUNALARMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F863CD25118C3200DAD97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28F863CF25118C3200DAD97B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,8 +93,52 @@
 			isa = PBXGroup;
 			children = (
 				28B7036225189584004EC291 /* UserDefaultsExtension.swift */,
+				28B70371251C2C67004EC291 /* CollectionViewCellExtension.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		28B70364251B0582004EC291 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				28B7036C251B39BE004EC291 /* model */,
+				28B70369251B10AE004EC291 /* view */,
+				28B70368251B10A6004EC291 /* controller */,
+				28B70365251B0F74004EC291 /* storyboard */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		28B70365251B0F74004EC291 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				28B70366251B0F8E004EC291 /* MemoStoryboard.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		28B70368251B10A6004EC291 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				28B7036A251B1644004EC291 /* MemoViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		28B70369251B10AE004EC291 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				28B7036F251C2520004EC291 /* MemoCollectionViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		28B7036C251B39BE004EC291 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				28B7036D251B39E8004EC291 /* Memo.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		28F863C125118C3200DAD97B = {
@@ -108,6 +160,7 @@
 		28F863CC25118C3200DAD97B /* EUNALARMI */ = {
 			isa = PBXGroup;
 			children = (
+				28B70364251B0582004EC291 /* Memo */,
 				28B7036125189570004EC291 /* extension */,
 				28F863E125119E9200DAD97B /* Alarm */,
 				28F863CD25118C3200DAD97B /* AppDelegate.swift */,
@@ -116,7 +169,6 @@
 				28F863D625118C3300DAD97B /* Assets.xcassets */,
 				28F863D825118C3300DAD97B /* LaunchScreen.storyboard */,
 				28F863DB25118C3300DAD97B /* Info.plist */,
-				2816C74A2514721200064CC4 /* MainTabBarViewController.swift */,
 			);
 			path = EUNALARMI;
 			sourceTree = "<group>";
@@ -223,6 +275,7 @@
 				28F863D725118C3300DAD97B /* Assets.xcassets in Resources */,
 				28F863D525118C3200DAD97B /* Main.storyboard in Resources */,
 				28F863EA2511A37400DAD97B /* AlarmStoryboard.storyboard in Resources */,
+				28B70367251B0F8E004EC291 /* MemoStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,15 +287,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F863E625119ED100DAD97B /* AlarmTableViewCell.swift in Sources */,
+				28B70372251C2C67004EC291 /* CollectionViewCellExtension.swift in Sources */,
 				28F863E325119EAF00DAD97B /* AlarmViewController.swift in Sources */,
 				28099F6E2511C46A0020E901 /* NewAlarmViewController.swift in Sources */,
-				2816C74B2514721200064CC4 /* MainTabBarViewController.swift in Sources */,
 				2816C73E2513172100064CC4 /* AlarmLabelViewController.swift in Sources */,
 				28F863CE25118C3200DAD97B /* AppDelegate.swift in Sources */,
 				2816C73A2511DD5E00064CC4 /* Alarm.swift in Sources */,
 				2816C73C2512D87400064CC4 /* AlarmWeekDayTableViewController.swift in Sources */,
 				28F863D025118C3200DAD97B /* SceneDelegate.swift in Sources */,
+				28B7036B251B1644004EC291 /* MemoViewController.swift in Sources */,
 				2816C74925143A2200064CC4 /* AlarmDelegate.swift in Sources */,
+				28B70370251C2520004EC291 /* MemoCollectionViewCell.swift in Sources */,
+				28B7036E251B39E8004EC291 /* Memo.swift in Sources */,
 				28B7036325189584004EC291 /* UserDefaultsExtension.swift in Sources */,
 				2816C7462513496100064CC4 /* SettingAlarmString.swift in Sources */,
 			);
@@ -389,8 +445,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B5VE639J3N;
 				INFOPLIST_FILE = EUNALARMI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,8 +464,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = B5VE639J3N;
 				INFOPLIST_FILE = EUNALARMI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

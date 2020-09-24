@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="116" translatesAutoresizingMaskIntoConstraints="NO" id="cVs-2z-wbi">
-                                        <rect key="frame" x="26" y="65" width="367.5" height="30"/>
+                                        <rect key="frame" x="26" y="65" width="362" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="QOP-Hb-70y">
                                                 <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
@@ -92,7 +92,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-Fe-PxC">
-                                                <rect key="frame" x="337.5" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="332" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="HuP-b4-4JS"/>
                                                     <constraint firstAttribute="height" constant="30" id="pT2-fI-vPF"/>
@@ -110,7 +110,7 @@
                                     <constraint firstItem="cVs-2z-wbi" firstAttribute="leading" secondItem="ld6-l4-TlM" secondAttribute="leading" constant="26" id="0nR-Uq-3X4"/>
                                     <constraint firstAttribute="height" constant="120" id="RVM-Jx-EtT"/>
                                     <constraint firstItem="cVs-2z-wbi" firstAttribute="top" secondItem="ld6-l4-TlM" secondAttribute="top" constant="65" id="ryQ-EG-fCT"/>
-                                    <constraint firstAttribute="trailing" secondItem="cVs-2z-wbi" secondAttribute="trailing" constant="20.5" id="tDe-EY-o9n"/>
+                                    <constraint firstAttribute="trailing" secondItem="cVs-2z-wbi" secondAttribute="trailing" constant="26" id="tDe-EY-o9n"/>
                                 </constraints>
                             </view>
                         </subviews>

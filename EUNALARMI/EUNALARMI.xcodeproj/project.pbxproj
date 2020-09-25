@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		28099F6E2511C46A0020E901 /* NewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28099F6D2511C46A0020E901 /* NewAlarmViewController.swift */; };
+		2813CEF5251C743800E1C603 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2813CEF4251C743800E1C603 /* NewMemoViewController.swift */; };
+		2813CEF9251C779400E1C603 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2813CEF8251C779400E1C603 /* UIViewControllerExtension.swift */; };
 		2816C73A2511DD5E00064CC4 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C7392511DD5E00064CC4 /* Alarm.swift */; };
 		2816C73C2512D87400064CC4 /* AlarmWeekDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C73B2512D87400064CC4 /* AlarmWeekDayTableViewController.swift */; };
 		2816C73E2513172100064CC4 /* AlarmLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C73D2513172100064CC4 /* AlarmLabelViewController.swift */; };
@@ -27,10 +29,13 @@
 		28F863E325119EAF00DAD97B /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F863E225119EAF00DAD97B /* AlarmViewController.swift */; };
 		28F863E625119ED100DAD97B /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F863E525119ED100DAD97B /* AlarmTableViewCell.swift */; };
 		28F863EA2511A37400DAD97B /* AlarmStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F863E92511A37400DAD97B /* AlarmStoryboard.storyboard */; };
+		28FCD2E5251DB9F70030AACA /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD2E4251DB9F70030AACA /* NotificationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		28099F6D2511C46A0020E901 /* NewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmViewController.swift; sourceTree = "<group>"; };
+		2813CEF4251C743800E1C603 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
+		2813CEF8251C779400E1C603 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2816C7392511DD5E00064CC4 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		2816C73B2512D87400064CC4 /* AlarmWeekDayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmWeekDayTableViewController.swift; sourceTree = "<group>"; };
 		2816C73D2513172100064CC4 /* AlarmLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmLabelViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 		28F863E225119EAF00DAD97B /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		28F863E525119ED100DAD97B /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		28F863E92511A37400DAD97B /* AlarmStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmStoryboard.storyboard; sourceTree = "<group>"; };
+		28FCD2E4251DB9F70030AACA /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 			children = (
 				28B7036225189584004EC291 /* UserDefaultsExtension.swift */,
 				28B70371251C2C67004EC291 /* CollectionViewCellExtension.swift */,
+				2813CEF8251C779400E1C603 /* UIViewControllerExtension.swift */,
+				28FCD2E4251DB9F70030AACA /* NotificationExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -121,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				28B7036A251B1644004EC291 /* MemoViewController.swift */,
+				2813CEF4251C743800E1C603 /* NewMemoViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 				28B70372251C2C67004EC291 /* CollectionViewCellExtension.swift in Sources */,
 				28F863E325119EAF00DAD97B /* AlarmViewController.swift in Sources */,
 				28099F6E2511C46A0020E901 /* NewAlarmViewController.swift in Sources */,
+				2813CEF9251C779400E1C603 /* UIViewControllerExtension.swift in Sources */,
 				2816C73E2513172100064CC4 /* AlarmLabelViewController.swift in Sources */,
 				28F863CE25118C3200DAD97B /* AppDelegate.swift in Sources */,
 				2816C73A2511DD5E00064CC4 /* Alarm.swift in Sources */,
@@ -297,8 +307,10 @@
 				28F863D025118C3200DAD97B /* SceneDelegate.swift in Sources */,
 				28B7036B251B1644004EC291 /* MemoViewController.swift in Sources */,
 				2816C74925143A2200064CC4 /* AlarmDelegate.swift in Sources */,
+				28FCD2E5251DB9F70030AACA /* NotificationExtension.swift in Sources */,
 				28B70370251C2520004EC291 /* MemoCollectionViewCell.swift in Sources */,
 				28B7036E251B39E8004EC291 /* Memo.swift in Sources */,
+				2813CEF5251C743800E1C603 /* NewMemoViewController.swift in Sources */,
 				28B7036325189584004EC291 /* UserDefaultsExtension.swift in Sources */,
 				2816C7462513496100064CC4 /* SettingAlarmString.swift in Sources */,
 			);

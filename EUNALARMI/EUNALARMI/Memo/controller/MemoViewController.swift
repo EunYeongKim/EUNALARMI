@@ -28,9 +28,20 @@ class MemoViewController: UIViewController {
         tabBarItem = item
     }
     
+    var token: NSObjectProtocol?
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        token = NotificationCenter.default.addObserver(forName: Notification.Name.Memo.Insert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
+            self?.memoCollectionView.reloadData()
+            self?.memoTableView.reloadData()
+        }
     }
 
 }

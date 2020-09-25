@@ -71,6 +71,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="aAP-0R-EE6"/>
                                                 </constraints>
                                                 <state key="normal" image="plus"/>
+                                                <connections>
+                                                    <segue destination="Bny-79-oQh" kind="presentation" id="zbS-e9-Qij"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -173,9 +176,76 @@
             </objects>
             <point key="canvasLocation" x="-617" y="-100"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aev-ms-XBm">
+            <objects>
+                <navigationController id="Bny-79-oQh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gkR-Ng-CCY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hHk-zF-Ot1" kind="relationship" relationship="rootViewController" id="6iu-Rw-CHT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XV7-7Q-MYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="-409"/>
+        </scene>
+        <!--새 메모-->
+        <scene sceneID="4Wz-D4-um0">
+            <objects>
+                <viewController id="hHk-zF-Ot1" customClass="NewMemoViewController" customModule="EUNALARMI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDE-rT-ztJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vDs-d3-HQe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="r53-T7-DOQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDs-d3-HQe" firstAttribute="leading" secondItem="r53-T7-DOQ" secondAttribute="leading" id="aB7-qc-8OM"/>
+                            <constraint firstItem="vDs-d3-HQe" firstAttribute="top" secondItem="DDE-rT-ztJ" secondAttribute="top" id="cZn-hs-Q0j"/>
+                            <constraint firstItem="vDs-d3-HQe" firstAttribute="trailing" secondItem="r53-T7-DOQ" secondAttribute="trailing" id="hx9-4B-ejN"/>
+                            <constraint firstAttribute="bottom" secondItem="vDs-d3-HQe" secondAttribute="bottom" id="yUc-Rs-QID"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="새 메모" id="R0B-hu-hLe">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9FW-Qe-5Tr">
+                            <color key="tintColor" red="0.33725490200000002" green="0.38431372549999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="didTapClose:" destination="hHk-zF-Ot1" id="LFk-nH-cJy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WBN-zC-arv">
+                            <color key="tintColor" red="0.61568627450000002" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="didTapSave:" destination="hHk-zF-Ot1" id="7Q6-Ua-f5f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoTextView" destination="vDs-d3-HQe" id="EPb-Vo-01l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsS-H3-W2C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092.753623188406" y="-409.15178571428572"/>
+        </scene>
     </scenes>
     <resources>
         <image name="plus" width="170.66667175292969" height="170.66667175292969"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

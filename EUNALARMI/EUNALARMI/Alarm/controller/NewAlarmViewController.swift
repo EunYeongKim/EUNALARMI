@@ -70,6 +70,10 @@ class NewAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initDataWithView()
+        if #available(iOS 14, *) {
+            timePicker.preferredDatePickerStyle = .wheels
+        }
+        
         timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
         
     }

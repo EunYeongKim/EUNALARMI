@@ -22,7 +22,7 @@ class MemoCollectionViewCell: UICollectionViewCell {
             self.contentLabel.text = memoData.content
             self.createLabel.text = formatter.string(from: memoData.createDate)
             self.setBorderRound(cornerRadius: 16)
-            self.setShadow(cornerRadius: 16, shadowRadius: 8, shadowOpacity: 0.15, shadowOffsetWidth: 2, shadowOffsetHeight: 0)
+            self.setShadow(cornerRadius: 16, shadowRadius: 8, shadowOpacity: 0.1, shadowOffsetWidth: 2, shadowOffsetHeight: 0)
         }
     }
     @IBOutlet weak var contentLabel: UILabel!

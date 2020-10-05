@@ -10,6 +10,9 @@ import UIKit
 
 class MemoDetailViewController: UIViewController {
     var memo: Memo?
+    var memoIndex: Int?
+    var editMemoToken: NSObjectProtocol?
+    
     let formatter: DateFormatter = {
        let f = DateFormatter()
         f.dateStyle = .long
@@ -18,12 +21,30 @@ class MemoDetailViewController: UIViewController {
         return f
     }()
     
+    @IBOutlet weak var memoContentTableView: UITableView!
     @IBAction func didTapBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination.children.first as? NewMemoViewController {
+            vc.editMemo = memo
+            vc.memoIndex = memoIndex
+        }
+    }
+    
+    deinit {
+        if let token = editMemoToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editMemoToken = NotificationCenter.default.addObserver(forName: Notification.Name.Memo.Edit, object: nil, queue: OperationQueue.main) { [weak self] (_) in
+            self?.memoContentTableView.reloadData()
+        }
     }
 }
 

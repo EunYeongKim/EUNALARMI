@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Memo {
+class Memo: Codable {
     var content: String
     var createDate: Date
     
@@ -23,4 +23,9 @@ class Memo {
     Memo(content: "나는 은영이양 하이루"),
     Memo(content: "호호호호ㅗ호 퇵은 퇵은 하고 싶어요")
     ]
+}
+
+enum Mode {
+    case new
+    case edit
 }

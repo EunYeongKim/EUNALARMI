@@ -74,3 +74,23 @@ extension MemoViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension MemoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let nav = UIStoryboard(name: "MemoStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MemoDetailViewNavigationController") as? UINavigationController, let vc = nav.viewControllers.first as? MemoDetailViewController else { return }
+        vc.memo = Memo.dummyMemoList[indexPath.row]
+        
+        self.present(nav, animated: true, completion: nil)
+    }
+}
+
+extension MemoViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let nav = UIStoryboard(name: "MemoStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MemoDetailViewNavigationController") as? UINavigationController, let vc = nav.viewControllers.first as? MemoDetailViewController else { return }
+        vc.memo = Memo.dummyMemoList[indexPath.row]
+        
+        self.present(nav, animated: true, completion: nil)
+    }
+}

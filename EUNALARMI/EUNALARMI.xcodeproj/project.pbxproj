@@ -30,6 +30,7 @@
 		28F863E625119ED100DAD97B /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F863E525119ED100DAD97B /* AlarmTableViewCell.swift */; };
 		28F863EA2511A37400DAD97B /* AlarmStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F863E92511A37400DAD97B /* AlarmStoryboard.storyboard */; };
 		28FCD2E5251DB9F70030AACA /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD2E4251DB9F70030AACA /* NotificationExtension.swift */; };
+		28FCD2ED251DC0E10030AACA /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD2EC251DC0E10030AACA /* MemoDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		28F863E525119ED100DAD97B /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		28F863E92511A37400DAD97B /* AlarmStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmStoryboard.storyboard; sourceTree = "<group>"; };
 		28FCD2E4251DB9F70030AACA /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		28FCD2EC251DC0E10030AACA /* MemoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				28B7036A251B1644004EC291 /* MemoViewController.swift */,
 				2813CEF4251C743800E1C603 /* NewMemoViewController.swift */,
+				28FCD2EC251DC0E10030AACA /* MemoDetailViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FCD2ED251DC0E10030AACA /* MemoDetailViewController.swift in Sources */,
 				28F863E625119ED100DAD97B /* AlarmTableViewCell.swift in Sources */,
 				28B70372251C2C67004EC291 /* CollectionViewCellExtension.swift in Sources */,
 				28F863E325119EAF00DAD97B /* AlarmViewController.swift in Sources */,

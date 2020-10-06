@@ -14,7 +14,7 @@ class MemoDetailViewController: UIViewController {
     var editMemoToken: NSObjectProtocol?
     
     let formatter: DateFormatter = {
-       let f = DateFormatter()
+        let f = DateFormatter()
         f.dateStyle = .long
         f.timeStyle = .short
         f.locale = Locale(identifier: "Ko_kr")
@@ -26,6 +26,35 @@ class MemoDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func didTapDelete(_ sender: Any) {
+        deleteMemoAlert()
+    }
+    @IBAction func didTapShare(_ sender: Any) {
+        shareMemo()
+    }
+    
+    func shareMemo() {
+        guard let memo = memo?.content else { return }
+        let vc = UIActivityViewController(activityItems: [memo], applicationActivities: nil)
+        
+        vc.completionWithItemsHandler = { [weak self] (activity, success, item, error) in
+            if success {
+                switch activity {
+                case UIActivity.ActivityType.copyToPasteboard:
+                    self?.toast(message: "클립보드로 복사를 완료했습니다")
+                case UIActivity.ActivityType.message:
+                    self?.toast(message: "메세지로 복사를 완료했습니다")
+                case UIActivity.ActivityType("com.apple.mobilenotes.SharingExtension"):
+                    self?.toast(message: "메모로 복사를 완료했습니다")
+                default:
+                    self?.toast(message: "공유를 완료했습니다")
+                }
+            } 
+        }
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func deleteMemoAlert() {
         let alert = UIAlertController(title: "삭제 확인", message: "메모를 삭제할까요?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] (action) in
             self?.deleteMemoNoti()

@@ -30,6 +30,7 @@ class MemoViewController: UIViewController {
     
     var insertMemoToken: NSObjectProtocol?
     var editMemoToken: NSObjectProtocol?
+    var deleteMemoToken: NSObjectProtocol?
 
     @IBOutlet weak var memoCollectionView: UICollectionView!
     @IBOutlet weak var memoTableView: UITableView!
@@ -50,6 +51,10 @@ class MemoViewController: UIViewController {
         if let token = editMemoToken {
             NotificationCenter.default.removeObserver(token)
         }
+        
+        if let token = deleteMemoToken {
+            NotificationCenter.default.removeObserver(token)
+        }
     }
     
     func configureUI(){
@@ -62,10 +67,7 @@ class MemoViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureUI()
-        
+    func registerObserver() {
         insertMemoToken = NotificationCenter.default.addObserver(forName: Notification.Name.Memo.Insert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
             guard let `self` = self else { return }
             if let newMemo = noti.userInfo?["memo"] as? Memo {
@@ -84,8 +86,22 @@ class MemoViewController: UIViewController {
             self.memoCollectionView.reloadData()
             self.memoTableView.reloadData()
         }
+        
+        deleteMemoToken = NotificationCenter.default.addObserver(forName: Notification.Name.Memo.Delete, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let `self` = self else { return }
+            if let index = noti.userInfo?["index"] as? Int {
+                self.memoList.remove(at: index)
+            }
+            self.memoCollectionView.reloadData()
+            self.memoTableView.reloadData()
+        })
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.configureUI()
+        self.registerObserver()
+    }
 }
 
 extension MemoViewController: UICollectionViewDataSource {

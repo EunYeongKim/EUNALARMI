@@ -12,6 +12,7 @@ extension Notification.Name {
     enum Memo {
         static let Insert = Notification.Name(rawValue: "Insert")
         static let Edit = Notification.Name(rawValue: "Edit")
+        static let Delete = Notification.Name(rawValue: "Delete")
     }
 }
 

@@ -25,6 +25,25 @@ class MemoDetailViewController: UIViewController {
     @IBAction func didTapBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func didTapDelete(_ sender: Any) {
+        let alert = UIAlertController(title: "삭제 확인", message: "메모를 삭제할까요?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] (action) in
+            self?.deleteMemoNoti()
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteMemoNoti() {
+        guard let deleteMemo = memo, let index = memoIndex else { return }
+        let userInfo = ["memo": deleteMemo, "index": index] as [String : Any]
+        NotificationCenter.default.post(name: Notification.Name.Memo.Delete, object: nil, userInfo: userInfo)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination.children.first as? NewMemoViewController {

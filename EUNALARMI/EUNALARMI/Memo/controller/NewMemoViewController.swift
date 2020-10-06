@@ -16,6 +16,9 @@ class NewMemoViewController: UIViewController {
         }
     }
     var memoIndex: Int?
+    var originalMemoContent: String?
+    var willShowToken: NSObjectProtocol?
+    var willHideToken: NSObjectProtocol?
     
     @IBOutlet weak var memoTextView: UITextView!
     
@@ -51,12 +54,98 @@ class NewMemoViewController: UIViewController {
         case .edit:
             navigationItem.title = "메모 편집"
             memoTextView.text = editMemo?.content
+            originalMemoContent = editMemo?.content
         }
+    }
+    
+    deinit {
+        if let token = willShowToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+        
+        if let token = willHideToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
+    func registerObserver() {
+        willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let `self` = self else { return }
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardHeight = frame.cgRectValue.height
+                
+                var inset = self.memoTextView.contentInset
+                inset.bottom = keyboardHeight
+                self.memoTextView.contentInset = inset
+                
+                inset = self.memoTextView.scrollIndicatorInsets
+                inset.bottom = keyboardHeight
+                self.memoTextView.scrollIndicatorInsets = inset
+            }
+        })
+        
+        willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let `self` = self else { return }
+            
+            var inset = self.memoTextView.contentInset
+            inset.bottom = 0
+            self.memoTextView.contentInset = inset
+            
+            inset = self.memoTextView.scrollIndicatorInsets
+            inset.bottom = 0
+            self.memoTextView.scrollIndicatorInsets = inset
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        memoTextView.delegate = self
+        registerObserver()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        memoTextView.becomeFirstResponder()
+        navigationController?.presentationController?.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        memoTextView.resignFirstResponder()
+        navigationController?.presentationController?.delegate = nil
+    }
+    
+    func editSaveAlert() {
+        let alert = UIAlertController(title: "알림", message: "편집한 내용을 저장할까요?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (action) in
+            self?.didTapSave(action)
+        }
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] (action) in
+            self?.didTapClose(action)
+        }
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension NewMemoViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if let original = originalMemoContent, let edited = textView.text {
+            if #available(iOS 13.0, *) {
+                isModalInPresentation = original != edited
+            }
+        }
+    }
+}
+
+extension NewMemoViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        editSaveAlert()
+    }
 }

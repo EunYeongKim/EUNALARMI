@@ -11,7 +11,7 @@ import UIKit
 extension UICollectionViewCell {
     func setShadow(cornerRadius: CGFloat, shadowRadius: CGFloat, shadowOpacity: Float, shadowOffsetWidth: CGFloat, shadowOffsetHeight: CGFloat) {
         layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor(named: Config.DarkModeColor.blackAndWhite.rawValue)?.cgColor
         
         layer.cornerRadius = cornerRadius
         layer.shadowRadius = shadowRadius
@@ -21,7 +21,7 @@ extension UICollectionViewCell {
     }
     
     func setBorderRound(cornerRadius: CGFloat) {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor(named: Config.DarkModeColor.whiteAndBlack.rawValue)
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
     }

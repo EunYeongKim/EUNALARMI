@@ -16,6 +16,7 @@
 		2816C7462513496100064CC4 /* SettingAlarmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C7452513496100064CC4 /* SettingAlarmString.swift */; };
 		2816C74925143A2200064CC4 /* AlarmDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2816C74825143A2200064CC4 /* AlarmDelegate.swift */; };
 		28ADA598252D7BD8009C2A40 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ADA597252D7BD8009C2A40 /* config.swift */; };
+		28ADA59F252D8D67009C2A40 /* AlarmNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ADA59E252D8D67009C2A40 /* AlarmNotificationManager.swift */; };
 		28B7036325189584004EC291 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036225189584004EC291 /* UserDefaultsExtension.swift */; };
 		28B70367251B0F8E004EC291 /* MemoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B70366251B0F8E004EC291 /* MemoStoryboard.storyboard */; };
 		28B7036B251B1644004EC291 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7036A251B1644004EC291 /* MemoViewController.swift */; };
@@ -44,6 +45,7 @@
 		2816C7452513496100064CC4 /* SettingAlarmString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmString.swift; sourceTree = "<group>"; };
 		2816C74825143A2200064CC4 /* AlarmDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDelegate.swift; sourceTree = "<group>"; };
 		28ADA597252D7BD8009C2A40 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
+		28ADA59E252D8D67009C2A40 /* AlarmNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmNotificationManager.swift; sourceTree = "<group>"; };
 		28B7036225189584004EC291 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		28B70366251B0F8E004EC291 /* MemoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoStoryboard.storyboard; sourceTree = "<group>"; };
 		28B7036A251B1644004EC291 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				28ADA597252D7BD8009C2A40 /* config.swift */,
+				28ADA59E252D8D67009C2A40 /* AlarmNotificationManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28ADA59F252D8D67009C2A40 /* AlarmNotificationManager.swift in Sources */,
 				28FCD2ED251DC0E10030AACA /* MemoDetailViewController.swift in Sources */,
 				28F863E625119ED100DAD97B /* AlarmTableViewCell.swift in Sources */,
 				28B70372251C2C67004EC291 /* CollectionViewCellExtension.swift in Sources */,

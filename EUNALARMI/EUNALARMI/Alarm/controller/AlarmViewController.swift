@@ -38,6 +38,22 @@ class AlarmViewController: UIViewController {
     
     @objc func switchChanged(_ sender: UISwitch) {
         alarmList[sender.tag].alarmOn = sender.isOn
+        if sender.isOn {
+            setNotification(alarm: alarmList[sender.tag])
+        } else {
+            deleteNotification(alarm: alarmList[sender.tag])
+        }
+    }
+    
+    func setNotification(alarm: Alarm) {
+        let manager = AlarmNotificationManager()
+        manager.addAlarmNotification(alarm: alarm)
+        manager.scheduleAlarm()
+    }
+    
+    func deleteNotification(alarm: Alarm) {
+        let manager = AlarmNotificationManager()
+        manager.removeAlarmNotification(alarm: alarm)
     }
 }
 
@@ -64,6 +80,8 @@ extension AlarmViewController: UITableViewDelegate {
             guard let vc = UIStoryboard(name: "AlarmStoryboard", bundle: nil).instantiateViewController(withIdentifier: "NewAlarmViewController") as? NewAlarmViewController else { return }
             let nav = UINavigationController(rootViewController: vc)
             
+            self.deleteNotification(alarm: self.alarmList[indexPath.row])
+            
             vc.alarmDelegate = self
             vc.alarm = self.alarmList[indexPath.row]
             vc.editIndex = indexPath.row
@@ -74,6 +92,7 @@ extension AlarmViewController: UITableViewDelegate {
         })
         
         let deleteAction = UIContextualAction(style: .destructive, title: "삭제", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+            self.deleteNotification(alarm: self.alarmList[indexPath.row])
             self.alarmList.remove(at: indexPath.row)
             
             self.alarmTableView.beginUpdates()
@@ -90,11 +109,13 @@ extension AlarmViewController: UITableViewDelegate {
 extension AlarmViewController: AlarmMainDelegate {
     func addAlarmItem(alarm value: Alarm) {
         alarmList.append(value)
+        setNotification(alarm: value)
         alarmTableView.reloadData()
     }
     
     func editAlarmItem(alarm value: Alarm, index: Int) {
         alarmList[index] = value
+        setNotification(alarm: value)
         alarmTableView.reloadData()
     }
 }

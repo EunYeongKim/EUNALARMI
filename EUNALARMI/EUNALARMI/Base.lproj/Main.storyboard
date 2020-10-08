@@ -3,40 +3,23 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Memo-->
-        <scene sceneID="U4p-ny-ABr">
-            <objects>
-                <viewController id="vwj-WL-Xek" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wJT-re-eLw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="5I3-iN-Ej7"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Memo" image="doc.text" catalog="system" id="eVz-Xy-bb4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uYD-pt-zMS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-32" y="291"/>
-        </scene>
-        <!--Main Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="Qw0-o2-SAf">
             <objects>
-                <tabBarController id="3LF-Lf-iYW" customClass="MainTabBarViewController" customModule="EUNALARMI" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="3LF-Lf-iYW" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="j41-Ft-tiX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.64705882349999999" green="0.57647058819999997" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.64705882349999999" green="0.57647058819999997" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="g1n-fM-s0S" kind="relationship" relationship="viewControllers" id="rCL-a4-7GL"/>
-                        <segue destination="vwj-WL-Xek" kind="relationship" relationship="viewControllers" id="6ej-uv-Td9"/>
+                        <segue destination="Jc0-xO-Er9" kind="relationship" relationship="viewControllers" id="OOh-kX-y7q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXI-IM-ErM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -53,6 +36,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMY-6B-qer" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-301" y="-258"/>
+        </scene>
+        <!--MemoStoryboard-->
+        <scene sceneID="Z2b-Bu-QlF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MemoStoryboard" id="Jc0-xO-Er9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Memo" image="doc.text" catalog="system" id="jYq-ob-BDi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ibi-M5-iSK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-301" y="157"/>
         </scene>
     </scenes>
     <resources>

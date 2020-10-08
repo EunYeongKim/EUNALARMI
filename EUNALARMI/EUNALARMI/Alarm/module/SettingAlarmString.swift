@@ -10,10 +10,10 @@ import Foundation
 
 func convertDaysToString(_ days: [WeekDay])-> String {
     var resultLabel = ""
-    var sortedDay = days.sorted()
+    let sortedDay = days.sorted()
     
-    var weekday: [WeekDay] = [.mon, .tue, .wed, .thu, .fri]
-    var weekend: [WeekDay] = [.sun, .sat]
+    let weekday: [WeekDay] = [.mon, .tue, .wed, .thu, .fri]
+    let weekend: [WeekDay] = [.sun, .sat]
     
     if days.count == 0 {
         return "안 함"

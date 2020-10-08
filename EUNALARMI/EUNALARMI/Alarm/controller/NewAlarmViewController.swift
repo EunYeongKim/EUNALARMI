@@ -25,6 +25,7 @@ class NewAlarmViewController: UIViewController {
     }
     
     @objc func didTapSave(_ sender: Any) {
+        alarm.alarmNotiId = setAlarmNotiId()
         alarmDelegate?.addAlarmItem(alarm: alarm)
         dismiss(animated: true, completion: nil)
     }
@@ -46,11 +47,14 @@ class NewAlarmViewController: UIViewController {
         self.alarm.alarmTime = dateformatter.string(from: timePicker.date)
     }
     
+    func setAlarmNotiId() -> String{
+        dateformatter.dateFormat = "yyyy-MM-dd HH:mm:ss "
+        return dateformatter.string(from: Date())
+    }
+    
     func prepareEditing() {
-        if let alarmTime = self.alarm.alarmTime {
-            dateformatter.dateFormat = "HH:mm"
-            self.timePicker.date = dateformatter.date(from: alarmTime) ?? Date()
-        }
+        dateformatter.dateFormat = "HH:mm"
+        self.timePicker.date = dateformatter.date(from: self.alarm.alarmTime) ?? Date()
         
         alarmSetting[0].detail = convertDaysToString(self.alarm.alarmCycle)
         alarmSetting[1].detail = self.alarm.alarmLabel
@@ -70,6 +74,10 @@ class NewAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initDataWithView()
+        if #available(iOS 14, *) {
+            timePicker.preferredDatePickerStyle = .wheels
+        }
+        
         timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
         
     }

@@ -72,14 +72,16 @@ class AlarmNotificationManager {
             content.body = notification.body
             content.sound = UNNotificationSound.default
             
+            var repeatFlag = false
             var date = DateComponents()
             date.hour = notification.hour
             date.minute = notification.minute
             if let day = notification.weekday {
                 date.weekday = day
+                repeatFlag = true
             }
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeatFlag)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
